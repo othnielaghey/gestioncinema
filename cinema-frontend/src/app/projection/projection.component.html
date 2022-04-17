@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default panel-primary">
+        <div class="panel-heading">Ajouter une projection</div>
+        <div class="panel-body">
+          <form #f="ngForm" (ngSubmit)="onSaveProjection(f.value)">
+
+            <div class="form-group">
+              <label for="name">Date de la projection</label>
+              <input type="text" 
+              ngModel name="dateProjection" 
+              id="dateProjection" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="name">Prix</label>
+              <input type="text" ngModel name="price" 
+              id="price" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="name">Ville</label> 
+              <select (change)="onCityChange($event)" 
+              ngModel name="city" class="form-control">
+                <option value="" >Choose a city</option> 
+                <option *ngFor="let city of cities" [value]="city.id">
+                  {{ city.name }}
+                </option>
+              </select>
+            </div>
+             
+            <div class="form-group">
+              <label for="name">Cinema</label>
+              <select (change)="onCinemaChange($event)" 
+              ngModel name="cinema"  class="form-control">
+                <option value="" >Choose a cinema</option> 
+                <option *ngFor="let cinema of cinemas" [value]="cinema.id">
+                  {{ cinema.name }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Salle</label> 
+              <select (change)="onRoomChange($event)" ngModel name="room" class="form-control">
+                <option value="" >Choose a room</option> 
+                <option *ngFor="let room of rooms" [value]="room.id">
+                  {{ room.name }}
+                </option>
+              </select>
+            </div> 
+            <div class="form-group">
+              <label for="name">Séance</label> 
+              <select (change)="onSessionChange($event)" ngModel name="room" class="form-control">
+                <option value="" >Choose a session</option> 
+                <option *ngFor="let city of cities" [value]="city.id">
+                  {{ session.id }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Film</label> 
+              <select (change)="onMovieChange($event)" ngModel name="room" class="form-control">
+                <option value="" >Choose a movie</option> 
+                <option *ngFor="let movie of movies" [value]="movie.id">
+                  {{ movie.title }}
+                </option>
+              </select>
+            </div>
+            
+
+
+            <button class="btn btn-primary" type="submit">save</button>
+          </form>
+        </div>
+        </div>
+  
+        <hr>
+        <div *ngIf="idCinema">
+        <h3>Room managmenet</h3>
+        <div class="panel panel-default">
+          <div class="panel-heading">Adding Room</div>
+          <div class="panel-body">
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

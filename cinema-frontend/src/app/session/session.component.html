@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default panel-primary">
+        <div class="panel-heading">Ajouter une session</div>
+        <div class="panel-body">
+          <form #f="ngForm" (ngSubmit)="onSaveSession(f.value)">
+            <div class="form-group">
+              <label for="name">Heure de début</label>
+              <input type="text" 
+              ngModel name="hourStart" 
+              id="hourStart" 
+              class="form-control">
+            </div>
+
+            <button class="btn btn-primary" 
+            type="submit">save</button>
+          </form>
+        </div>
+        </div>
+    </div>
+  </div>
+  
