@@ -42,6 +42,6 @@ public class CinemaApiApplication implements CommandLineRunner {
 		iCinemaInitService.initMovies();
 		iCinemaInitService.initReviews();
 		iCinemaInitService.initProjections();
-		iCinemaInitService.initTickets();
+//		iCinemaInitService.initTickets();
 	}
 }

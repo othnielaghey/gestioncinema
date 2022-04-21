@@ -11,8 +11,6 @@ public class User {
     private String username;
     private String password;
     private boolean enabled;
-    @OneToMany(mappedBy = "user")
-    private Collection<Review> reviews;
 
     // constructors
     public User() {
@@ -62,13 +60,5 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public Collection<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Collection<Review> reviews) {
-        this.reviews = reviews;
     }
 }

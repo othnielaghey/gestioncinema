@@ -21,7 +21,7 @@ export class CinemaComponent implements OnInit {
   cities: City[];
   search;
   currentCity: City;
-  selectedCity
+  selectedCity;
   constructor(public cityService: CityService,
               public cinemaService: CinemaService) { }
 
@@ -49,7 +49,6 @@ export class CinemaComponent implements OnInit {
         window.history.back();
       }, error => {
         console.log(error);
-
       }
     );
   }

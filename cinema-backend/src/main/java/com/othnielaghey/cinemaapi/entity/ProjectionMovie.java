@@ -27,6 +27,11 @@ public class ProjectionMovie implements Serializable {
     public ProjectionMovie() {
     }
 
+    public ProjectionMovie(String dateProjection, double price) {
+        this.dateProjection = dateProjection;
+        this.price = price;
+    }
+
     public ProjectionMovie(String dateProjection, double price, Room room, Movie movie, Session session) {
         this.dateProjection = dateProjection;
         this.price = price;

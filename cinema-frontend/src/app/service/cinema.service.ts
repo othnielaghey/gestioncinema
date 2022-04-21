@@ -20,7 +20,7 @@ export class CinemaService {
     }
     return this.http.post(this.url, myCinema);
   }
-
+ 
   findCinemasByCityId(id) {
     // let url = 'http://localhost:8080/cinemas/search/findByCityId?id=1';
     return this.http.get<onGetResponseCinemas>(`${this.url}/search/findByCityId?id=${id}`)
@@ -33,7 +33,6 @@ export class CinemaService {
     const urlForDeleteCinema = `http://localhost:8080/deleteCinemas/${id}/${city.id}`;
     return this.http.delete(`${urlForDeleteCinema}`);
   }
-
 
   findCinemaById(id) {
     return this.http.get<Cinema>(`${this.url}/${id}`);

@@ -12,7 +12,7 @@
   </div>
 
   <div class="col-md-9">
-    <div class="panel panel-default panel-primary">
+    <div class="panel panel-info panel-info">
       <div class="panel-heading">List des cinemas</div>
       <div class="panel-body">
         <ul *ngIf="cinemas" class="nav nav-pills">
@@ -27,7 +27,7 @@
         <div class="row" *ngIf="rooms">
           <div *ngFor="let room of rooms._embedded.rooms">
             <div class="col-md-6">
-            <div class="panel panel-default panel-primary" style="min-height: 370px;">
+            <div class="panel panel-info panel-info" style="min-height: 370px;">
               <div class="panel-heading">{{room.name}}</div>
               <div class="panel-body" *ngIf="room.projections">
                 <div class="row">
@@ -39,8 +39,15 @@
                            class="list-group-item"
                            [ngClass]="{active: p==currentProjection}"
                            style="cursor: pointer;">
-                        {{p.session.hourStart}} <span class="alert-danger"> price </span>
-                        <span class="alert-info">{{p.price|number: '0.00'}} F CFA</span>
+                        <span class="alert-info"> Heure: </span> {{p.session.hourStart}} 
+                        <br>
+                        <span class="alert-info">Prix: </span>{{p.price|number: '0.00'}} XOF
+                        <br>
+                        <span class="alert-info">Film: </span>{{p.movie.title}}
+                        <br>
+                        <span class="alert-info">Producteur: </span>{{p.movie.director}}
+                        <br>
+                        <span class="alert-info">Année: </span>{{p.movie.releaseDate}}
                       </li>
                     </ul>
                   </div>

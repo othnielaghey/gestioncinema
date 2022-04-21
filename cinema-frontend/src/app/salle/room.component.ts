@@ -11,11 +11,12 @@ import { RoomService } from '../service/room.service';
   styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnInit {
-  roomName;
+  name;
   rooms: Room[]; 
   cities;
   idCity; 
-  idCinema; 
+  idCinema;  
+  search: string;
   cinemas: Cinema[]
   constructor(public cinemaService: CinemaService,
               public cityService: CityService,
@@ -61,11 +62,19 @@ export class RoomComponent implements OnInit {
     );
   }
 
-  findAllRoomsByCinemaId(cinemaId) {
-
+  findAllRooms() {
+    this.roomService.findAllRooms().subscribe(
+      data => {
+        this.rooms = data;
+      }, error => {
+        console.log(error);
+      }
+    );
   }
+
   onCinemaChange(event) {
     console.log(event.target.value);
     this.idCinema = event.target.value;
   }
+
 }

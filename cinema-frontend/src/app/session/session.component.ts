@@ -9,7 +9,7 @@ import { logging } from 'protractor';
   styleUrls: ['./session.component.css']
 })
 export class SessionComponent implements OnInit {
-    hourStart: string;
+    hourStart;
     sessions: Session[];
 
     constructor(public sessionService: SessionService) { }

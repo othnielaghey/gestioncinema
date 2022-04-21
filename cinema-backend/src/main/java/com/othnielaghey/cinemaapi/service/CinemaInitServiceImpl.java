@@ -2,12 +2,12 @@ package com.othnielaghey.cinemaapi.service;
 
 
 import com.othnielaghey.cinemaapi.dao.*;
-import com.othnielaghey.cinemaapi.entity.Movie;
-import com.othnielaghey.cinemaapi.entity.Ticket;
+import com.othnielaghey.cinemaapi.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -135,12 +135,12 @@ public class CinemaInitServiceImpl  implements ICinemaInitService {
 
     @Override
     public void initProjections() {
-        List<Movie> movies = movieRepository.findAll();
-        cityRepository.findAll().forEach(city -> {
-            city.getCinemas().forEach(cinema -> {
-                cinema.getRooms().forEach(room -> {
-                        int index = new Random().nextInt(movies.size());
-                        Movie movie = movies.get(index);
+//        List<Movie> movies = movieRepository.findAll();
+//        cityRepository.findAll().forEach(city -> {
+//            city.getCinemas().forEach(cinema -> {
+//                cinema.getRooms().forEach(room -> {
+//                    int index = new Random().nextInt(movies.size());
+//                    Movie movie = movies.get(index);
 //                        sessionRepository.findAll().forEach(session -> {
 //                            ProjectionMovie projectionMovie =
 //                                    new ProjectionMovie(new  (), 40, room, movie, session);
@@ -148,20 +148,20 @@ public class CinemaInitServiceImpl  implements ICinemaInitService {
 //                            projectionRepository.save(projectionMovie);
 //                        });
 
-                });
-            });
-        });
+//                });
+//            });
+//        });
     }
 
     @Override
     public void initTickets() {
-        projectionRepository.findAll().forEach(projectionMovie -> {
-            projectionMovie.getRoom().getSeats().forEach(seat -> {
-                Ticket ticket =
-                        new Ticket("", projectionMovie.getPrice(), false, seat, projectionMovie);
-                ticketRepository.save(ticket);
-            });
-        });
+//        projectionRepository.findAll().forEach(projectionMovie -> {
+//            projectionMovie.getRoom().getSeats().forEach(seat -> {
+//                Ticket ticket =
+//                        new Ticket("", projectionMovie.getPrice(), false, seat, projectionMovie);
+//                ticketRepository.save(ticket);
+//            });
+//        });
     }
 
 }

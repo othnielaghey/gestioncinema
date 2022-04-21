@@ -6,4 +6,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin("*")
 public interface SessionRepository extends JpaRepository<Session, Long> {
+
 }

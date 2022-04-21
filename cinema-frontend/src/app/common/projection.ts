@@ -1,6 +1,6 @@
-import { Room } from "./room";
-import { Movie } from "./movie";
-import { Session } from "./session";
+import { Room } from './room';
+import { Movie } from './movie';
+import { Session } from './session';
 
 export class Projection {
     id: number;
@@ -10,4 +10,3 @@ export class Projection {
     movie: Movie;
     session: Session;
   }
-   

@@ -10,13 +10,13 @@ import { map } from 'rxjs/operators';
     providedIn: 'root'
   }) 
 export class ProjectionService {
-    url: string = `http://localhost:8080/projections`;
+    url: string = `http://localhost:8080/projectionMovies`;
 
     roomUrl: string = 'http://localhost:8080/rooms';
     sessionUrl: string = 'http://localhost:8080/sessions';
     movieUrl: string = 'http://localhost:8080/movies';
   
-    constructor(public http: HttpClient,
+    constructor(public http: HttpClient, 
       public rommService: RoomService,
       public sessionService: SessionService,
       public movieService: MovieService) { }
@@ -32,12 +32,14 @@ export class ProjectionService {
         return this.http.post(this.url, myProjection);
 
         //voir SaveRoom
-      }
-      findAll() {
-        return this.http.get<getResponceProjections>(this.url).pipe(
+    }
+
+    findAll() {
+        return this.http.get<getResponceProjections>(this.url)
+        .pipe(
           map(response => response._embedded.projections)
         );
-      }
+    }
 
 }
 

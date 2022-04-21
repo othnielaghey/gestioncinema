@@ -9,7 +9,6 @@ import { ProjectionComponent } from './projection/projection.component';
 import { MovieComponent } from './movie/movie.component';
 import { CinemaDetailComponent } from './cinema-detail/cinema-detail.component';
 import {LoginComponent} from './login/login.component';
-// import { CinemasComponent } from './cinema/cinema.component';
 
 
 const routes: Routes = [

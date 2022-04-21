@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default panel-primary">
+    <div class="panel panel-info panel-info">
       <div class="panel-heading">Ajouter une salle</div>
       <div class="panel-body">
         <form #f="ngForm" (ngSubmit)="onSaveRoom(f.value)">
           <div class="form-group">
             <label for="name">Nome de la salle</label>
-            <input type="text" [(ngModel)]="roomName" name="name" id="name" class="form-control">
-          </div>
+            <input type="text" [(ngModel)]="name" name="name" id="name" class="form-control">
+          </div> 
           <div class="form-group">
             <label for="name">count Seats</label>
             <input type="text" ngModel name="countSeats" id="address" class="form-control">
@@ -25,7 +25,7 @@
           
           <div class="form-group">
             <label for="name">Cinema</label>
-            <select (change)="onCinemaChange($event)" name="cinema" ngModel class="form-control">
+            <select (change)="onCinemaChange($event)" ngModel name="cinema"  class="form-control">
               <option value="" >Choose a cinema</option> 
               <option *ngFor="let cinema of cinemas" [value]="cinema.id">
                 {{ cinema.name }}
@@ -40,7 +40,7 @@
       <hr>
       <div *ngIf="idCinema">
       <h3>Room managmenet</h3>
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">Adding Room</div>
         <div class="panel-body">
 

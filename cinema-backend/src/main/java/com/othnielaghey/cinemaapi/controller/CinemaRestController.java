@@ -28,6 +28,8 @@ public class CinemaRestController {
     @Autowired
     private CityRepository cityRepository;
 
+    @Autowired ProjectionRepository projectionRepository;
+
 //    @GetMapping(value = "moviePhoto/{idMovie}", produces = MediaType.IMAGE_JPEG_VALUE)
 //    public byte[] getPhotoOfMovie(@PathVariable("idMovie") Long id) throws IOException {
 //        Movie movie = movieRepository.findById(id).get();

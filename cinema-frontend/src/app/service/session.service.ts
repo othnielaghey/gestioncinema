@@ -17,7 +17,7 @@ export class SessionService {
   }
 
   findAll() {
-    return this.http.get<getResponceSessions>(this.url).pipe(
+    return this.http.get<getResponseSessions>(this.url).pipe(
       map(response => response._embedded.sessions)
     );
   }
@@ -33,7 +33,7 @@ export class SessionService {
    }
 
 }
-interface getResponceSessions {
+interface getResponseSessions {
   _embedded: {
     sessions: Session[];
   }

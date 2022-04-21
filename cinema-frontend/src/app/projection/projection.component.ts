@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectionService } from '../service/projection.service';
 import { Projection } from '../common/projection';
+import { City } from '../common/city';
 import { Cinema } from '../common/cinema';
 import { Room } from '../common/room';
 import { Session } from '../common/session';
@@ -17,21 +18,30 @@ import { MovieService } from '../service/movie.service';
     styleUrls: ['./projection.component.css']
   })
   export class ProjectionComponent implements OnInit {
-      price: string;
+      price: number;
       dateProjection: string;
-      cinemas: Cinema[];
-      cities;
-      idCity; 
-      idCinema;
-      idRoom;
-      hourStart;
-      idMovie;
-      idSession;
-      rooms: Room[];
-      sessions: Session[];
-      session;
-      movies: Movie[];
       projections: Projection[]
+      projection: Projection;
+
+      cinemaId;
+      cinemas: Cinema[];
+      cinema: Cinema;
+      
+      cityId;
+      city: City;
+      cities: City[];
+
+      roomId;
+      rooms: Room[];
+      room: Room;
+
+      sessionId;
+      sessions: Session[];
+      session: Session;
+
+      movieId;
+      movies: Movie[];
+      movie: Movie;
       constructor(public projectionService: ProjectionService,
         public cityService: CityService,
         public cinemaService: CinemaService,
@@ -41,7 +51,10 @@ import { MovieService } from '../service/movie.service';
         ){}
 
         ngOnInit(): void {
-            this.findAllProjections();
+            this.findAllCities();
+            this.findAllSessions();
+            this.findAllMovies();
+            this.findAllRooms();
         }
 
         onSaveProjection(formData) {
@@ -55,9 +68,53 @@ import { MovieService } from '../service/movie.service';
                 window.history.back();
                 // this.findAllMovies();
               }, error => {
-                console.log(error);
+                console.log(error); 
+                alert(error);
               }
             );
+        }
+        findAllCities() {
+          this.cityService.findAll().subscribe(
+            data => {
+              this.cities = data;
+            }, error => {
+              console.log(error);
+            }
+          );
+        }
+
+        findAllSessions() {
+          this.sessionService.findAll().subscribe(
+            data => {
+              this.sessions = data;
+              // console.log(this.cities);
+  
+            }, error => {
+              console.log(error);
+            }
+          )
+        }
+
+        findAllRooms() {
+          this.roomService.findAllRooms().subscribe(
+            data => {
+              this.rooms = data;
+            }, error => {
+              console.log(error);
+            }
+          );
+        }
+
+        findAllMovies() {
+          this.movieService.findAllMovies().subscribe(
+            data => {
+              this.movies = data;
+              // console.log(this.cities);
+  
+            }, error => {
+              console.log(error);
+            }
+          )
         }
 
         findAllProjections(){
@@ -71,33 +128,52 @@ import { MovieService } from '../service/movie.service';
         }
 
         onCityChange(event) {
-            this.idCity = event.target.value;
-            this.cinemaService.findCinemasByCityId(this.idCity).subscribe(
+            console.log(event.target.value);
+            this.cityId = event.target.value;
+            this.cinemaService.findCinemasByCityId(this.cityId).subscribe(
               data => {
                 this.cinemas = data;
               }, error => {
                 console.log(error);
               }
             );
+
+            this.roomService.findRoomsByCinemaId(this.cinemaId).subscribe(
+              data => {
+                console.log(data);
+                this.rooms = data;
+              }, error => {
+                console.log(error);
+              }
+            );
         }
         
-          onCinemaChange(event) {
-            console.log(event.target.value);
-            this.idCinema = event.target.value;
-          }
+          // onCinemaChange(event) {
+          //   console.log(event.target.value);
+          //   this.cinemaId = event.target.value;
+          //   this.roomService.findRoomsByCinemaId(this.cinemaId).subscribe(
+          //      data => {
+          //        console.log(data);
+          //        this.rooms = data;
+          //      }, error => {
+          //        console.log(error);
+          //      }
+          //    );
+          // }
 
           onRoomChange(event) {
               console.log(event.target.value);
-              this.idRoom = event.target.value;
+              this.roomId = event.target.value;
           }
+
           onSessionChange(event) {
               console.log(event.target.value);
-              this.idSession = event.target.value;
+              this.sessionId = event.target.value;
           }
 
           onMovieChange(event) {
               console.log(event.target.value);
-              this.idMovie = event.target.value;
+              this.movieId = event.target.value;
           }
 
   }

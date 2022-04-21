@@ -14,7 +14,7 @@ export class CityService {
 
   saveCity(cityName) {
     return this.http.post(this.url, cityName);
-  }
+  } 
 
   findAll() {
     return this.http.get<getResponceCities>(this.url).pipe(
