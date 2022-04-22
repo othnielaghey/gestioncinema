@@ -1,4 +1,20 @@
 <div class="row">
+
+  <div class="col-md-6">
+    <div class="panel-heading">Liste des Sessions</div>
+    <ul *ngIf="sessions" class="list-group">
+      <li *ngFor="let session of sessions._embedded.sessions"
+            [ngClass]="{active: session.hourStart==currentSession}"
+            class="list-group-item"
+            style="cursor: pointer;font-size: 18px;"
+            hover="Cliquez pour voir les détails">
+        Session de {{session.hourStart}}
+
+      </li>
+    </ul>
+  </div>
+
+
     <div class="col-md-6">
       <div class="panel panel-info panel-info">
         <div class="panel-heading">Ajouter une session</div>
@@ -14,8 +30,8 @@
 
             <button class="btn btn-primary" 
             type="submit">save</button>
-          </form>
-        </div>
+          </form> 
+        </div> 
         </div>
     </div>
   </div>

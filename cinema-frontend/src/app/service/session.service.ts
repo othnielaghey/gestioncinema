@@ -9,11 +9,19 @@ import { map } from 'rxjs/operators';
 export class SessionService {
 
   url = 'http://localhost:8080/sessions';
+  host: string = 'http://localhost:8080/';
 
   constructor(public http: HttpClient) { }
 
   saveSession(hourStart) {
     return this.http.post(this.url, hourStart);
+  }
+  getAllSessions(){
+    return this.http.get(`${this.host}sessions`);
+  }
+
+  getSessionDetails(session){
+    return this.http.get(session._links.sessions.href);
   }
 
   findAll() {

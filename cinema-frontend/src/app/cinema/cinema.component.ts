@@ -22,6 +22,7 @@ export class CinemaComponent implements OnInit {
   search;
   currentCity: City;
   selectedCity;
+  router: any;
   constructor(public cityService: CityService,
               public cinemaService: CinemaService) { }
 
@@ -46,12 +47,12 @@ export class CinemaComponent implements OnInit {
       data => {
         console.log(data);
         alert('cinema has been added successfully');
-        window.history.back();
+        this.router.navigate(['cinemas']);
       }, error => {
         console.log(error);
       }
     );
-  }
+  } 
 
   onSearchChange(event) {
     this.cityId = event.target.value;

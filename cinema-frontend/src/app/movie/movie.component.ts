@@ -15,14 +15,14 @@ import { logging } from 'protractor';
     releaseDate: string;
     movies;
     movie: Movie;
-    currentMovie;
+    currentMovie; 
     constructor(public movieService: MovieService) { }
  
     ngOnInit(): void {
       this.findAllMovies();
       this.movieService.getAllMovies().subscribe(
         (data) => {
-          this.movies = data;
+          this.movies = data; 
           console.log(data);
 
         }, (error) => {
@@ -69,7 +69,6 @@ import { logging } from 'protractor';
             console.log(error);
           }
         );
-
       }
  
 }

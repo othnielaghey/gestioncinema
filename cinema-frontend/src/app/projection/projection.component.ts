@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProjectionService } from '../service/projection.service';
 import { Projection } from '../common/projection';
 import { City } from '../common/city';
@@ -47,7 +48,9 @@ import { MovieService } from '../service/movie.service';
         public cinemaService: CinemaService,
         public roomService: RoomService,
         public sessionService: SessionService,
-        public movieService: MovieService
+        public movieService: MovieService,
+
+        private router: Router
         ){}
 
         ngOnInit(): void {
@@ -64,10 +67,9 @@ import { MovieService } from '../service/movie.service';
               data => {
                 // this.movie = data;
                 console.log(data);
-                alert('Projection has been added succeessfully');
-                window.history.back();
-                // this.findAllMovies();
-              }, error => {
+                alert('Projection has been added succeessfully');                
+                  this.router.navigate(['cinemas']);
+                      }, error => {
                 console.log(error); 
                 alert(error);
               }
@@ -138,29 +140,37 @@ import { MovieService } from '../service/movie.service';
               }
             );
 
-            this.roomService.findRoomsByCinemaId(this.cinemaId).subscribe(
-              data => {
-                console.log(data);
-                this.rooms = data;
-              }, error => {
-                console.log(error);
-              }
-            );
+            // this.cinemaId = event.target.value;
+
+            // this.roomService.findRoomsByCinemaId(this.cinemaId).subscribe(
+              
+            //   data0 => {
+            //     console.log(data0);
+            //     alert('its working');
+
+            //     this.rooms = data0;
+            //   }, error => {
+            //     // console.log(error);
+            //     alert('data0');
+            //   }
+            // );
         }
         
-          // onCinemaChange(event) {
-          //   console.log(event.target.value);
-          //   this.cinemaId = event.target.value;
-          //   this.roomService.findRoomsByCinemaId(this.cinemaId).subscribe(
-          //      data => {
-          //        console.log(data);
-          //        this.rooms = data;
-          //      }, error => {
-          //        console.log(error);
-          //      }
-          //    );
-          // }
+           onCinemaChange(event) {
+             console.log(event.target.value);
+             this.cinemaId = event.target.value;
+             alert('its working');
 
+             this.roomService.findRoomsByCinemaId(this.cinemaId).subscribe(
+                data => {
+                  console.log(data);
+                  this.rooms = data;
+                }, error => {
+                  console.log(error);
+                }
+              );
+           }
+ 
           onRoomChange(event) {
               console.log(event.target.value);
               this.roomId = event.target.value;

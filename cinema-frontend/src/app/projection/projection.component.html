@@ -50,10 +50,10 @@
                 </option>
               </select>
             </div> 
-            
+             
             <div class="form-group">
               <label for="name">Séance</label> 
-              <select (change)="onSessionChange($event)" ngModel name="room" class="form-control">
+              <select (change)="onSessionChange($event)" ngModel name="session" class="form-control">
                 <option value="" >Choose a session</option> 
                 <option *ngFor="let session of sessions" [value]="session.id">
                   {{ session.hourStart }}
@@ -63,7 +63,7 @@
 
             <div class="form-group">
               <label for="name">Film</label> 
-              <select (change)="onMovieChange($event)" ngModel name="room" class="form-control">
+              <select (change)="onMovieChange($event)" ngModel name="movie" class="form-control">
                 <option value="" >Choose a movie</option> 
                 <option *ngFor="let movie of movies" [value]="movie.id">
                   {{ movie.title }}

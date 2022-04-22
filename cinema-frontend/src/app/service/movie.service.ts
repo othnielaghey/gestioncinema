@@ -27,7 +27,7 @@ export class MovieService {
 
   getAllMovies() {
     return this.http.get(`${this.host}movies`);
-  }
+  } 
 
   findAllMovies() {
     return this.http.get<getResponseMovies>(this.url).pipe(

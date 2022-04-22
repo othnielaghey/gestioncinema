@@ -9,14 +9,25 @@ import { logging } from 'protractor';
   styleUrls: ['./session.component.css']
 })
 export class SessionComponent implements OnInit {
-    hourStart;
-    sessions: Session[];
+    id: number;
+    hourStart: string;
+    sessions;
+    Session: Session;
+    currentSession;
 
     constructor(public sessionService: SessionService) { }
 
     ngOnInit(): void {
         this.findAllSessions();
-    }
+        this.sessionService.getAllSessions().subscribe(
+          (data) => {
+            this.sessions = data;
+            console.log(data);
+          }, error => {
+            console.log(error);
+          }
+        );
+    }  
 
     onSaveSession(formData) {
         console.log(formData);
@@ -26,14 +37,14 @@ export class SessionComponent implements OnInit {
             // this.movie = data;
             console.log(data);
             alert('Session has been added succeessfully');
-            window.history.back();
+            window.location.reload();
             // this.findAllMovies();
           }, error => {
             console.log(error);
           }
         );
     }
-    
+
     findAllSessions() {
         this.sessionService.findAll().subscribe(
           data => {

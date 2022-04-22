@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cinema } from '../common/cinema';
 import { Room } from '../common/room';
 import { CinemaService } from '../service/cinema.service';
@@ -15,12 +16,14 @@ export class RoomComponent implements OnInit {
   rooms: Room[]; 
   cities;
   idCity; 
-  idCinema;  
+  idCinema;   
   search: string;
   cinemas: Cinema[]
   constructor(public cinemaService: CinemaService,
               public cityService: CityService,
-              public roomService: RoomService) { }
+              public roomService: RoomService,
+
+              private router: Router) { }
 
   ngOnInit(): void {
     this.findAllCities();
@@ -34,7 +37,7 @@ export class RoomComponent implements OnInit {
          // this.cities = data;
          console.log(data);
          alert('Room has been added succeessfully');
-         window.history.back();
+         this.router.navigate(['cinemas']);
          // this.findAllRoomsByCinemaId(cinemaId);
        }, error => {
          console.log(error);
