@@ -46,38 +46,22 @@ public class CinemaInitServiceImpl  implements ICinemaInitService {
 
     @Override
     public void initUsers() {
-//        Stream.of("Farah", "Anas", "Ihssane", "Ibrahim", "Hanane", "Lmiae")
-//                .forEach(username -> {
-//                    userRepository.save(new User(username+"@gmail.com", username, "1234"));
-//                });
+
     }
 
     @Override
     public void initCities() {
-//        Stream.of("Casablanca", "Rabat", "Fes", "Meknès", "Marrakech", "Tanger")
-//                .forEach(city -> {
-//                    cityRepository.save(new City(city));
-//                });
+
     }
 
     @Override
     public void initCinemas() {
-//        cityRepository.findAll()
-//                .forEach(city -> {
-//                    Stream.of("MEGARAMA", "Cinéma RIF","CHAHRAZAD", "Cinela Lynx", "Cinema Rialto", "Royal", "Paradise", "IMAX", "FOUNOUN").forEach(cinemaName->{
-//                        cinemaRepository.save(new Cinema(cinemaName, "",10, city));
-//                    });
-//                });
+
     }
 
     @Override
     public void initRooms() {
-//        cinemaRepository.findAll().forEach(cinema -> {
-//           for (int i = 0; i < cinema.getCountRooms(); i++) {
-//               Room room = new Room("Room " + (i + 1) , 15, cinema);
-//               roomRepository.save(room);
-//           }
-//        });
+
     }
 
     @Override
@@ -92,45 +76,21 @@ public class CinemaInitServiceImpl  implements ICinemaInitService {
 
     @Override
     public void initSessions() {
-//        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
-//        Stream.of("10:00", "13:00", "15:00", "19:00", "21:00").forEach(startSession -> {
-//            try {
-//                Session session = new Session(dateFormat.parse(startSession));
-//                sessionRepository.save(session);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//        });
 
     }
 
     @Override
     public void initCategories() {
-//        Stream.of("DRAMA", "ACTION", "HORROR", "SCI-FI", "COMEDY", "ROMANCE", "CRIME")
-//                .forEach(category -> categoryRepository.save(new Category(category)));
     }
 
     @Override
     public void initMovies() {
-//        List<Category> categories = categoryRepository.findAll();
-//        Stream.of("Jocker","Parasite","The call").forEach(movieName -> {
-//            String photoName = movieName.replaceAll(" ", "");
-//            Movie movie = new Movie(movieName, "director1", "desc1", 134, new Date(), categories.get(new Random().nextInt(categories.size())), photoName);
-//            // save movie
-//            movieRepository.save(movie);
-//        });
 
     }
 
     @Override
     public void initReviews() {
-//        movieRepository.findAll().forEach(movie -> {
-//            userRepository.findAll().forEach(user -> {
-//                reviewRepository
-//                        .save(new Review(movie.getTitle()+" is a Great Movie",
-//                                movie, user));
-//            });
-//        });
+
     }
 
     @Override

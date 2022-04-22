@@ -1,5 +1,32 @@
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+
+  <div class="col-md-6">
+    <div class="panel-heading">List des Films</div>
+    <ul *ngIf="movies" class="list-group">
+      <li *ngFor="let movie of movies._embedded.movies"
+            (click)="onGetMovieDetails(movie)"
+            [ngClass]="{active: movie.title==currentMovie}"
+            class="list-group-item"
+            style="cursor: pointer;font-size: 18px;"
+            hover="Cliquez pour voir les détails">
+        {{movie.title}}
+
+        <ul *ngIf="currentMovie" class="list-group">
+          <li class="list-group-item"
+          style="cursor: pointer; color: black;font-size: 14px;"
+          >Realisateur: {{movie.director}}</li>
+          <li class="list-group-item"
+          style="cursor: pointer; color: black;font-size: 14px;"
+          >Durée: {{movie.duration}}</li>
+          <li class="list-group-item"
+          style="cursor: pointer; color: black;font-size: 14px;"
+          >Date de sortie: {{movie.releaseDate}}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+ 
+    <div class="col-md-6">
       <div class="panel panel-info panel-info">
         <div class="panel-heading">Ajouter un film</div>
         <div class="panel-body">
@@ -38,26 +65,6 @@
                     ngModel required>
                 </div>
 
-
-          <!-- <div class="form-group">
-              <label for="name">Ville</label> 
-              <select (change)="onCityChange($event)" ngModel name="city" class="form-control">
-                <option value="" >Choose a city</option> 
-                <option *ngFor="let city of cities" [value]="city.id">
-                  {{ city.name }}
-                </option>
-              </select>
-            </div> -->
-            
-            <!-- <div class="form-group">
-              <label for="name">Cinema</label>
-              <select (change)="onCinemaChange($event)" name="cinema" ngModel class="form-control">
-                <option value="" >Choose a cinema</option> 
-                <option *ngFor="let cinema of cinemas" [value]="cinema.id">
-                  {{ cinema.name }}
-                </option>
-              </select>
-            </div> -->
             <button class="btn btn-primary" type="submit">save</button>
           </form>
         </div>

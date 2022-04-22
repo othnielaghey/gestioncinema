@@ -8,7 +8,7 @@ export class CinemasService {
 
   host: string = 'http://localhost:8080/';
   constructor(public http: HttpClient) { }
-
+ 
 
   getAllCities() {
     return this.http.get(`${this.host}cities`);

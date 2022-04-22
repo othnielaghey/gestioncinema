@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-md-3">
+    <div class="panel-heading">List des cinemas</div>
     <ul *ngIf="cities" class="list-group">
       <li *ngFor="let city of cities._embedded.cities"
            (click)="onGetCinemas(city)"

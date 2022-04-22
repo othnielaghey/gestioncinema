@@ -6,11 +6,13 @@ import { Review } from '../common/review';
 
 @Injectable({
   providedIn: 'root'
-})
+}) 
 export class MovieService {
 
   constructor(private http: HttpClient) { }
-  host: string = 'http://localhost:8080/movies';
+  url: string = 'http://localhost:8080/movies';
+  host: string = 'http://localhost:8080/';
+
   // urlReviews: string = 'http://localhost:8080/reviews';
 
   saveMovie(movie: Movie) {
@@ -20,16 +22,24 @@ export class MovieService {
       duration: movie.duration,
       releaseDate: movie.releaseDate
     }
-    return this.http.post(this.host, myMovie);
+    return this.http.post(this.url, myMovie);
+  }
+
+  getAllMovies() {
+    return this.http.get(`${this.host}movies`);
   }
 
   findAllMovies() {
-    return this.http.get<getResponseMovies>(this.host).pipe(
+    return this.http.get<getResponseMovies>(this.url).pipe(
       map(response => response._embedded.movies)
     );
   }
   findMovieById(id) {
-    return this.http.get<Movie>(`${this.host}/${id}`);
+    return this.http.get<Movie>(`${this.url}/${id}`);
+  }
+
+  getMovieDetails(movie) {
+    return this.http.get(movie._links.movies.href);
   }
 
   // findReviewsByMovieId(id: any) {

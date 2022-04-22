@@ -13,12 +13,22 @@ import { logging } from 'protractor';
     director: string;
     duration: string;
     releaseDate: string;
-    movies: Movie[];
+    movies;
     movie: Movie;
+    currentMovie;
     constructor(public movieService: MovieService) { }
-
+ 
     ngOnInit(): void {
       this.findAllMovies();
+      this.movieService.getAllMovies().subscribe(
+        (data) => {
+          this.movies = data;
+          console.log(data);
+
+        }, (error) => {
+          console.log(error);
+        }
+      );
     }
 
     onSaveMovie(formData) {
@@ -29,40 +39,13 @@ import { logging } from 'protractor';
           // this.movie = data;
           console.log(data);
           alert('Movie has been added succeessfully')
-          window.history.back();
+          window.location.reload();
           // this.findAllMovies();
         }, error => {
           console.log(error);
         }
       );
     }
-
-    // onSaveMovie(formData) {
-
-    //     if (this.movie == undefined) {
-    //       // save
-    //       this.movie = formData;
-    //     }
-    //     console.log(this.movie);
-
-    //     this.moviesService.saveMovie(this.movie).subscribe(
-    //       (response)=> {
-    //         this.findAllMovies()
-    //         console.log(response);
-    //       }, error =>{
-    //         console.log(error);
-    //       }
-    //     );
-
-    //     this.title = '';
-    //     this.director = '';
-    //     this.duration = '';
-    //     this.releaseDate = '';
-    //     this.movie = undefined;
-
-    //     alert('Movie has been added succeessfully')
-
-    //   }
 
       findAllMovies() {
         this.movieService.findAllMovies().subscribe(
@@ -76,4 +59,17 @@ import { logging } from 'protractor';
         )
       }
 
+      onGetMovieDetails(movie) {
+        this.currentMovie = movie.title;
+        this.movieService.getMovieDetails(movie.id).subscribe(
+          (data) => {
+            this.currentMovie = data;
+            console.log(this.currentMovie);
+          }, error => {
+            console.log(error);
+          }
+        );
+
+      }
+ 
 }
